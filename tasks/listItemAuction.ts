@@ -15,7 +15,7 @@ task("listitemauction", "List item to auction on platform")
     const nft = await hre.ethers.getContractAt("NFT", process.env.NFT_ADDR as string);
 
     const decimals = await token.decimals();
-    const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, taskArgs.index);
+    const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
     await getApprove1NFT.wait();
     const listItem = await nerf.connect(addr1).listItemOnAuction(taskArgs.index, parseUnits(taskArgs.price, decimals), taskArgs.step);
     await listItem.wait();
