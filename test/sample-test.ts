@@ -42,7 +42,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItem(546, parseUnits("100", decimals));
       await listItem546.wait();
@@ -65,7 +65,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItem(546, parseUnits("100", decimals));
       await listItem546.wait();
@@ -89,7 +89,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItem(546, parseUnits("100", decimals));
       await listItem546.wait();
@@ -109,7 +109,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItem(546, parseUnits("100", decimals));
       await listItem546.wait();
@@ -131,7 +131,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItem(546, parseUnits("100", decimals));
       await listItem546.wait();
@@ -153,7 +153,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItem(546, parseUnits("100", decimals));
       await listItem546.wait();
@@ -177,7 +177,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItem(546, parseUnits("100", decimals));
       await listItem546.wait();
@@ -202,7 +202,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -236,7 +236,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -261,7 +261,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -296,7 +296,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -332,7 +332,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       await expect(nerf.connect(addr2).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals))).to.be.revertedWith("User has no rights to this token");
     });
@@ -352,7 +352,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -376,7 +376,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -398,7 +398,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -420,7 +420,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -440,7 +440,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -466,7 +466,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -494,7 +494,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();
@@ -528,7 +528,7 @@ describe("Hermes", function () {
       await artist1.wait();
       const createItem546 = await nerf.connect(addr1).createItem(546);
       await createItem546.wait();
-      const getApprove1NFT = await nft.connect(addr1).approve(nerf.address, 546);
+      const getApprove1NFT = await nft.connect(addr1).setApprovalForAll(nerf.address, true);
       await getApprove1NFT.wait();
       const listItem546 = await nerf.connect(addr1).listItemOnAuction(546, parseUnits("100", decimals), parseUnits("1", decimals));
       await listItem546.wait();

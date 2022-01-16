@@ -57,8 +57,8 @@ contract Nerf is AccessControl {
     }
 
     function listItem(uint256 _itemId, uint256 _price) external { 
-        require(NFT(nftAddress).ownerOf(_itemId) == msg.sender, "User has no rights to this token");
-        NFT(nftAddress).transferFrom(msg.sender, address(this), _itemId);
+        require(NFT(nftAddress).balanceOf(msg.sender, _itemId) == 1, "User has no rights to this token");
+        //NFT(nftAddress).safeTransferFrom(msg.sender, address(this), _itemId, 1, "");
         orders[_itemId] = Order(_price, msg.sender, true);
         emit ListItem(_itemId, msg.sender, _price);
     }
@@ -66,7 +66,8 @@ contract Nerf is AccessControl {
     function buyItem(uint256 _itemId) external { 
         require(orders[_itemId].actual, "Order isnt actual");
         require(ERC20(tokenAddress).transferFrom(msg.sender, orders[_itemId].owner, orders[_itemId].price));
-        NFT(nftAddress).safeTransferFrom(address(this), msg.sender, _itemId);
+        require(NFT(nftAddress).balanceOf(orders[_itemId].owner, _itemId) == 1, "The order owner no longer owns the token");
+        NFT(nftAddress).safeTransferFrom(orders[_itemId].owner, msg.sender, _itemId, 1, "");
         orders[_itemId].actual = false;
         emit BuyItem(_itemId, msg.sender);
     }
@@ -74,14 +75,14 @@ contract Nerf is AccessControl {
     function cancel(uint256 _itemId) external { 
         require(orders[_itemId].owner == msg.sender, "User has no rights to this token");
         require(orders[_itemId].actual, "Order isnt actual");
-        NFT(nftAddress).safeTransferFrom(address(this), msg.sender, _itemId);
+        //NFT(nftAddress).safeTransferFrom(address(this), msg.sender, _itemId, 1, "");
         orders[_itemId].actual = false;
         emit CancelTrade(_itemId, msg.sender);
     }
 
     function listItemOnAuction(uint256 _itemId, uint256 _price, uint256 _step) external {
-        require(NFT(nftAddress).ownerOf(_itemId) == msg.sender, "User has no rights to this token");
-        NFT(nftAddress).transferFrom(msg.sender, address(this), _itemId);
+        require(NFT(nftAddress).balanceOf(msg.sender, _itemId) == 1, "User has no rights to this token");
+        NFT(nftAddress).safeTransferFrom(msg.sender, address(this), _itemId, 1, "");
         auctions[_itemId] = Auction(0, block.timestamp + duration, _step, Order(_price, msg.sender, true), msg.sender);
         emit ListItemOnAuction(_itemId, msg.sender, _price, _step);
     }
@@ -103,7 +104,7 @@ contract Nerf is AccessControl {
         require(auctions[_itemId].counter > 1, "Not enough bids to finish auction");
         auctions[_itemId].order.actual = false;
         ERC20(tokenAddress).transfer(auctions[_itemId].order.owner, auctions[_itemId].order.price);
-        NFT(nftAddress).safeTransferFrom(address(this), auctions[_itemId].current, _itemId);
+        NFT(nftAddress).safeTransferFrom(address(this), auctions[_itemId].current, _itemId, 1, "");
         emit FinishAuction(_itemId, auctions[_itemId].current, auctions[_itemId].order.price);
     }
 
@@ -111,7 +112,7 @@ contract Nerf is AccessControl {
         auctions[_itemId].order.actual = false;
         if (auctions[_itemId].counter != 0)
             ERC20(tokenAddress).transfer(auctions[_itemId].current, auctions[_itemId].order.price);
-        NFT(nftAddress).safeTransferFrom(address(this), auctions[_itemId].order.owner, _itemId);
+        NFT(nftAddress).safeTransferFrom(address(this), auctions[_itemId].order.owner, _itemId, 1, "");
         emit CancelAuction(_itemId, msg.sender);
     }
 
