@@ -5,8 +5,9 @@ import "hardhat/console.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "./NFT.sol";
 import "./ERC20.sol";
+import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
-contract Nerf is AccessControl {
+contract Nerf is AccessControl, ERC1155Holder {
     
     uint256 private duration = 3 days;
     bytes32 public constant ARTIST_PERSON = keccak256("ARTIST_PERSON");
@@ -58,7 +59,7 @@ contract Nerf is AccessControl {
 
     function listItem(uint256 _itemId, uint256 _price) external { 
         require(NFT(nftAddress).balanceOf(msg.sender, _itemId) == 1, "User has no rights to this token");
-        //NFT(nftAddress).safeTransferFrom(msg.sender, address(this), _itemId, 1, "");
+        NFT(nftAddress).safeTransferFrom(msg.sender, address(this), _itemId, 1, "");
         orders[_itemId] = Order(_price, msg.sender, true);
         emit ListItem(_itemId, msg.sender, _price);
     }
@@ -66,8 +67,7 @@ contract Nerf is AccessControl {
     function buyItem(uint256 _itemId) external { 
         require(orders[_itemId].actual, "Order isnt actual");
         require(ERC20(tokenAddress).transferFrom(msg.sender, orders[_itemId].owner, orders[_itemId].price));
-        require(NFT(nftAddress).balanceOf(orders[_itemId].owner, _itemId) == 1, "The order owner no longer owns the token");
-        NFT(nftAddress).safeTransferFrom(orders[_itemId].owner, msg.sender, _itemId, 1, "");
+        NFT(nftAddress).safeTransferFrom(address(this), msg.sender, _itemId, 1, "");
         orders[_itemId].actual = false;
         emit BuyItem(_itemId, msg.sender);
     }
@@ -75,7 +75,7 @@ contract Nerf is AccessControl {
     function cancel(uint256 _itemId) external { 
         require(orders[_itemId].owner == msg.sender, "User has no rights to this token");
         require(orders[_itemId].actual, "Order isnt actual");
-        //NFT(nftAddress).safeTransferFrom(address(this), msg.sender, _itemId, 1, "");
+        NFT(nftAddress).safeTransferFrom(address(this), msg.sender, _itemId, 1, "");
         orders[_itemId].actual = false;
         emit CancelTrade(_itemId, msg.sender);
     }
@@ -122,5 +122,16 @@ contract Nerf is AccessControl {
 
     function setPrimeTime(uint256 _time) external onlyRole(DEFAULT_ADMIN_ROLE) { 
         duration = _time * 1 days;
+    }
+
+    // The following functions are overrides required by Solidity.
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(AccessControl, ERC1155Receiver)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
     }
 }
